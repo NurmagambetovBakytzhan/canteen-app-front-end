@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import MyInput from "../UI/input/MyInput";
 import MyButton from "../UI/button/MyButton";
-import axios from "axios";
+import {confirmRegistration} from "./RegistrationConfirmation.service";
 
 const RegistrationConfirmation = () => {
     const [code, setCode] = useState('');
@@ -10,14 +10,10 @@ const RegistrationConfirmation = () => {
         setCode(e.target.value)
     }
 
-    const handleCodeSubmit = (e) => {
+    const handleCodeSubmit = async (e) => {
         e.preventDefault();
-        const info = axios.post("/api/v1/users/verify/", {
-            "session_id": localStorage.getItem("session_id"),
-            "code": code,
-        });
-
-        info.then((res) => console.log(res))
+        const status = await confirmRegistration(code);
+        console.log(status)
     }
 
     return (

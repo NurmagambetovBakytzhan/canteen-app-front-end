@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import MyInput from "../UI/input/MyInput";
 import MyButton from "../UI/button/MyButton";
 import "./RegistrationForm.css"
-import axios from "axios";
+import {registerUser} from "./Registration.service";
 
 const RegistrationForm = () => {
 
@@ -54,22 +54,16 @@ const RegistrationForm = () => {
         );
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (name === '' || email === '' || password === '') {
             setError(true);
         } else {
             setSubmitted(true);
             setError(false);
-            const info = axios.post("/api/v1/users/", {
-                "first_name": name,
-                "last_name": surname,
-                "email": email,
-                "password": password,
-                "user_type": "Customer"
-            });
+            const session_id = await registerUser(name, surname, email, password);
 
-            info.then((res) => localStorage.setItem("session_id", res.data["session_id"]));
+            localStorage.setItem("session_id", session_id)
         }
     };
 
