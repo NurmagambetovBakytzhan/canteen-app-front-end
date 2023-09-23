@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import MyInput from "../UI/input/MyInput";
-import MyButton from "../UI/button/MyButton";
-import {confirmRegistration} from "./RegistrationConfirmation.service";
+import MyInput from "../../UI/input/MyInput";
+import MyButton from "../../UI/button/MyButton";
+import {confirmRegistration} from "../../services/api/RegistrationConfirmation.service";
 
 const RegistrationConfirmation = () => {
     const [code, setCode] = useState('');
