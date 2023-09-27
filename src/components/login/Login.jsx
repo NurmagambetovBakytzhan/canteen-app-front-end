@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Login.css';
 import axios from "axios";
+import MyButton from "../../UI/button/MyButton";
+import MyInput from "../../UI/input/MyInput";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -35,19 +37,14 @@ const Login = () => {
     return(
         <div className="login-form">
             <h1>Please Log In</h1>
-
             <form >
-                <label>
-                    <p>Email</p>
-                    <input onChange={handleEmail} type="text"  />
-                </label>
-                <label>
-                    <p>Password</p>
-                    <input onChange={handlePassword} type="password"  />
-                </label>
-                <div>
-                    <button onClick={handleSubmit} type="submit">Submit</button>
-                </div>
+                <label className="label">Email</label>
+                <MyInput onChange={handleEmail} type="text" />
+                <label className="label">Password</label>
+                <MyInput onChange={handlePassword} type="password" />
+                <MyButton onClick={handleSubmit} type="submit">
+                    Submit
+                </MyButton>
             </form>
 
         </div>
