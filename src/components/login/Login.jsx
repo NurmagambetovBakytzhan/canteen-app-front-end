@@ -4,8 +4,10 @@ import MyButton from "../../UI/button/MyButton";
 import MyInput from "../../UI/input/MyInput";
 import {login} from "../../services/api/Login.service";
 import {UserCreds} from "../../shared/classes/UserCredentials";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -29,7 +31,10 @@ const Login = () => {
             setError(false);
             const userCredentials = new UserCreds(email, password);
             const status = await login(userCredentials);
-            console.log(status);
+
+            if(status === 200) {
+                navigate("/menu");
+            }
         }
     };
 
