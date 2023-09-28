@@ -32,7 +32,8 @@ const Menu = () => {
                         {food.price}
                         <h3 onClick={() => pageRoute(`/food/${food.id}`)}> {food.name}</h3>
                         <br />
-                        <img src={food.image} width={200} alt={food.name} />
+                        <img width={200} onClick={() => pageRoute(`/food/${food.id}`)} src={food.image}/>
+
                     </li>
                 ))}
             </ul>
