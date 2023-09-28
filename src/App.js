@@ -5,19 +5,20 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 import Login from "./components/login/Login";
 import Menu from "./components/menu/Menu";
+import FoodDetail from "./components/foodDetail/FoodDetail";
 
 
 function App() {
     return (
         <div className="App">
             <h1>Hello</h1>
-            <Menu/>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/menu" element={<Menu/>}/>
+                    <Route path="/menu/" element={<Menu/>}/>
                     <Route path="/registration" element={<RegistrationForm/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/registration-confirmation" element={<RegistrationConfirmation/>}/>
+                    <Route path="/food/:id" element={<FoodDetail/>}/>
                 </Routes>
             </BrowserRouter>
 
