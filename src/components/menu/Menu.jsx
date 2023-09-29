@@ -1,32 +1,45 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {getAllFood} from '../../services/api/Menu.service';
 import "./Menu.css"
+import SearchBar from "../../shared/components/searchBar/SearchBar";
+import {FoodService} from "../../services/api/Food.service";
 
 const Menu = () => {
     const [foods, setFoods] = useState([]);
     const pageRoute = useNavigate()
+    const foodService = new FoodService();
+
     useEffect(() => {
-        getAllFood()
-            .then((data) => {
-                setFoods(data);
-            })
-            .catch((error) => {
-                console.error('Error while fetching foods!: ', error);
-            });
+        foodService.getFoods().then((data) => setFoods(data))
     }, []);
+
+    const onSearchSubmit = (searchText) => {
+        foodService.searchFood(searchText).then((data) => setFoods(data))
+    };
+
+    const handleSortChange = (e) => {
+        console.log(e.target.value);
+        foodService.getOrderedFoods(e.target.value).then((data) => setFoods(data));
+    };
 
     return (
         <div>
             <h2>Menu bon appétit</h2>
-
             <ul>
+                <SearchBar onSearchSubmit={onSearchSubmit} />
 
+                <div className="order-selector">
+                    <label htmlFor="order">Порядок:</label>
+                    <select id="order" onChange={handleSortChange}>
+                        <option value="price-asc">Цена по возрастанию</option>
+                        <option value="price-desc">Цена по убыванию</option>
+                        <option value="name-asc">Название А-Я</option>
+                        <option value="name-desc">Название А-Я</option>
+                    </select>
+                </div>
 
                 {foods.map((food) => (
                     <li key={food.id}>
-                        {/* Use the Link component to create a link to the food details page */}
-
                         <br />
                         {food.price}
                         <h3 onClick={() => pageRoute(`/food/${food.id}`)}> {food.name}</h3>
