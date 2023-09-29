@@ -2,3 +2,26 @@ h3:hover {
     color: orange;
     cursor: pointer;
 }
+
+.order-selector {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.order-selector label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.order-selector select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}

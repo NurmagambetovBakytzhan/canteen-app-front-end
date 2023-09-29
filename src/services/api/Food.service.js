@@ -3,6 +3,12 @@ import axios from "axios";
 export class FoodService {
     constructor() {
         this.endpoint = "/api/v1/food";
+        this.orderSelection = {
+            "price-asc": "price",
+            "price-desc": "-price",
+            "name-asc": "name",
+            "name-desc": "-name",
+        };
     }
 
     async getFoods() {
@@ -26,6 +32,15 @@ export class FoodService {
     async searchFood(name) {
         try {
             const response = await axios.get(`${this.endpoint}?search=${name}`);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getOrderedFoods(value) {
+        try {
+            const response = await axios.get(`${this.endpoint}?ordering=${this.orderSelection[value]}`);
             return response.data;
         } catch (error) {
             throw error;
