@@ -10,6 +10,5 @@ export const confirmRegistration = async (code) => {
         return response.status;
     } catch (error) {
         console.error("Error while registering user:", error);
-        throw error;
     }
 };

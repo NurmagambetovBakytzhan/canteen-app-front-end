@@ -19,6 +19,5 @@ export const login = async (credentials) => {
         return response.status;
     } catch (error) {
         console.error("Error while registering user:", error);
-        throw error;
     }
 }

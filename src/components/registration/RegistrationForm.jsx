@@ -3,15 +3,16 @@ import MyInput from "../../UI/input/MyInput";
 import MyButton from "../../UI/button/MyButton";
 import "./RegistrationForm.css"
 import {registerUser} from "../../services/api/Registration.service";
+import ErrorMessage from "../../shared/components/ErrorMessage/ErrorMessage";
+import {useNavigate} from "react-router-dom";
 
 const RegistrationForm = () => {
-
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
 
     const handleName = (e) => {
@@ -30,73 +31,42 @@ const RegistrationForm = () => {
         setPassword(e.target.value);
     };
 
-    const errorMessage = () => {
-        return (
-            <div
-                className="error"
-                style={{
-                    display: error ? '' : 'none',
-                }}>
-                <h1 style={{color: "red"}}>Please enter all the fields</h1>
-            </div>
-        );
-    };
-
-    const successMessage = () => {
-        return (
-            <div
-                className="success"
-                style={{
-                    display: submitted ? '' : 'none',
-                }}>
-                <h1>Confirmation code was sent to {email}</h1>
-            </div>
-        );
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (name === '' || email === '' || password === '') {
             setError(true);
         } else {
-            setSubmitted(true);
             setError(false);
             const session_id = await registerUser(name, surname, email, password);
-
             localStorage.setItem("session_id", session_id)
+            navigate("/registration-confirmation");
         }
     };
 
     return (
-        <div className="registration-form">
-            <div>
-                <h1>User Registration</h1>
-            </div>
+        <div className="form">
+            <h1>Регистрация</h1>
 
-            <div className="messages">
-                {errorMessage()}
-                {successMessage()}
-            </div>
+            <ErrorMessage error={error} message={'Заполните все поля'} />
 
-            <form>
-                <label className="label">Name</label>
-                <MyInput onChange={handleName} value={name} type="text" />
+            <label className="creds-label">Имя:</label>
+            <MyInput onChange={handleName} value={name} type="text" placeholder="Введите имя" />
 
-                <label className="label">Surname</label>
-                <MyInput onChange={handleSurname} value={surname} type="text" />
+            <label className="creds-label">Фамилия:</label>
+            <MyInput onChange={handleSurname} value={surname} type="text" placeholder="Введите фамилию" />
 
-                <label className="label">Email</label>
-                <MyInput onChange={handleEmail} value={email} type="email" />
+            <label className="creds-label">Почта:</label>
+            <MyInput onChange={handleEmail} value={email} type="email" placeholder="Введите почту" />
 
-                <label className="label">Password</label>
-                <MyInput onChange={handlePassword} value={password} type="password" />
-                <MyButton
-                    onClick={handleSubmit}
-                    type="submit"
-                >
-                    Submit
-                </MyButton>
-            </form>
+            <label className="creds-label">Пароль:</label>
+            <MyInput onChange={handlePassword} value={password} type="password" placeholder="Введите пароль" />
+            <MyButton
+                onClick={handleSubmit}
+                type="submit"
+                className="submit-btn"
+            >
+                Регистрация
+            </MyButton>
         </div>
     );
 };

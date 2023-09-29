@@ -1,11 +1,12 @@
 .btn {
     padding: 5px 15px;
     color: white;
-    background-color: orange;
+    background-color: #ff7200;
     font-size: 14px;
-    border: 1px solid orange;
-    border-radius: 3px;
+    border: 1px solid #ff7200;
+    border-radius: 7px;
     cursor: pointer;
+    width: 100%;
 }
 
 .btn:hover {

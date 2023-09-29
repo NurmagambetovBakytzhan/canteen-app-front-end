@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {Link, BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {getAllFood} from '../../services/api/Menu.service';
-import FoodDetail from '../foodDetail/FoodDetail';
 import "./Menu.css"
 
 const Menu = () => {
@@ -32,7 +31,7 @@ const Menu = () => {
                         {food.price}
                         <h3 onClick={() => pageRoute(`/food/${food.id}`)}> {food.name}</h3>
                         <br />
-                        <img width={200} onClick={() => pageRoute(`/food/${food.id}`)} src={food.image}/>
+                        <img width={200} onClick={() => pageRoute(`/food/${food.id}`)} src={food.image} alt="Нет фото"/>
 
                     </li>
                 ))}
