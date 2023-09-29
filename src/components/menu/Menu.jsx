@@ -1,39 +1,34 @@
 import React, {useEffect, useState} from 'react';
-import {Link, BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom';
-import {getAllFood} from '../../services/api/Menu.service';
-import FoodDetail from '../foodDetail/FoodDetail';
+import {useNavigate} from 'react-router-dom';
 import "./Menu.css"
+import SearchBar from "../../shared/components/searchBar/SearchBar";
+import {FoodService} from "../../services/api/Food.service";
 
 const Menu = () => {
     const [foods, setFoods] = useState([]);
     const pageRoute = useNavigate()
+    const foodService = new FoodService();
+
     useEffect(() => {
-        getAllFood()
-            .then((data) => {
-                setFoods(data);
-            })
-            .catch((error) => {
-                console.error('Error while fetching foods!: ', error);
-            });
+        foodService.getFoods().then((data) => setFoods(data))
     }, []);
+
+    const onSearchSubmit = (searchText) => {
+        foodService.searchFood(searchText).then((data) => setFoods(data))
+    };
 
     return (
         <div>
             <h2>Menu bon appétit</h2>
-
             <ul>
-
-
+                <SearchBar onSearchSubmit={onSearchSubmit} />
                 {foods.map((food) => (
                     <li key={food.id}>
-                        {/* Use the Link component to create a link to the food details page */}
-
                         <br />
                         {food.price}
                         <h3 onClick={() => pageRoute(`/food/${food.id}`)}> {food.name}</h3>
                         <br />
-                        <img width={200} onClick={() => pageRoute(`/food/${food.id}`)} src={food.image}/>
-
+                        <img width={200} onClick={() => pageRoute(`/food/${food.id}`)} src={food.image} alt="No photo"/>
                     </li>
                 ))}
             </ul>
