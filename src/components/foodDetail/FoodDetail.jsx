@@ -1,20 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {getFoodById} from "../../services/api/FoodDetails.service";
 import {useParams} from "react-router-dom";
+import {FoodService} from "../../services/api/Food.service";
 
 const FoodDetail = () => {
     const { id } = useParams();
     const [food, setFood] = useState(null);
+    const foodService = new FoodService();
 
     useEffect(() => {
-
-        getFoodById(id)
-            .then((data) => {
-                setFood(data);
-            })
-            .catch((error) => {
-                console.error('Error while fetching food details: ', error);
-            });
+        foodService.getFood(id).then((data) => setFood(data))
     }, [id]);
 
     if (!food) {
