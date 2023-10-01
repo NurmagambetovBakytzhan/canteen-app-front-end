@@ -23,7 +23,7 @@ const Menu = () => {
     };
 
     return (
-        <div>
+        <div className="menu">
             <h2>Menu bon appétit</h2>
             <ul>
                 <SearchBar onSearchSubmit={onSearchSubmit} />

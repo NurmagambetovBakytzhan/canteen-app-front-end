@@ -25,3 +25,7 @@ h3:hover {
     border: 1px solid lightgrey;
     border-radius: 5px;
 }
+
+.menu {
+    width: 70%;
+}
