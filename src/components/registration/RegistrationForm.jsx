@@ -63,7 +63,7 @@ const RegistrationForm = () => {
             <MyButton
                 onClick={handleSubmit}
                 type="submit"
-                className="submit-btn"
+                classNames={["submit-btn"]}
             >
                 Регистрация
             </MyButton>

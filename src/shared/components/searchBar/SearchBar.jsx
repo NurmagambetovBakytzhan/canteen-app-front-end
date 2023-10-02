@@ -18,8 +18,8 @@ const SearchBar = ({ onSearchSubmit }) => {
     return (
         <div className="searchbar-wrapper">
             <div className="searchbar">
-                <MyInput  type="text" className="search-input" placeholder="Введите наименование" value={searchText} onChange={handleInputChange}></MyInput>
-                <MyButton type="submit" className="search-btn" onClick={handleSubmitSearch}>Найти</MyButton>
+                <MyInput  type="text" classNames={["search-input"]} placeholder="Введите наименование" value={searchText} onChange={handleInputChange}></MyInput>
+                <MyButton type="submit" classNames={["search-btn"]} onClick={handleSubmitSearch}>Найти</MyButton>
             </div>
         </div>
     );

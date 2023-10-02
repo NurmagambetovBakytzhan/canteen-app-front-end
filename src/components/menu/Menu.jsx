@@ -23,32 +23,32 @@ const Menu = () => {
     };
 
     return (
-        <div className="menu">
+        <div className="menu-wrapper">
             <h2>Menu bon appétit</h2>
-            <ul>
                 <SearchBar onSearchSubmit={onSearchSubmit} />
 
                 <div className="order-selector">
                     <label htmlFor="order">Порядок:</label>
                     <select id="order" onChange={handleSortChange}>
+                        <option value="not-selected">Не выбрано</option>
                         <option value="price-asc">Цена по возрастанию</option>
                         <option value="price-desc">Цена по убыванию</option>
                         <option value="name-asc">Название А-Я</option>
                         <option value="name-desc">Название А-Я</option>
                     </select>
                 </div>
+                <div className="food-list">
 
-                {foods.map((food) => (
-                    <li key={food.id}>
-                        <br />
-                        {food.price}
-                        <h3 onClick={() => pageRoute(`/food/${food.id}`)}> {food.name}</h3>
-                        <br />
-                        <img width={200} onClick={() => pageRoute(`/food/${food.id}`)} src={food.image} alt="Нет фото"/>
-
-                    </li>
-                ))}
-            </ul>
+                    {foods.map((food) => (
+                        <div className="menu-item">
+                            <li key={food.id}>
+                                <img width={200} onClick={() => pageRoute(`/food/${food.id}`)} src={food.image} alt="Нет фото"/>
+                                <h3 onClick={() => pageRoute(`/food/${food.id}`)}> {food.name}</h3>
+                                <h3>{food.price} тг.</h3>
+                            </li>
+                        </div>
+                    ))}
+                </div>
         </div>
     );
 };

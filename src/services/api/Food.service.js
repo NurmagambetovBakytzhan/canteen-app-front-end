@@ -4,6 +4,7 @@ export class FoodService {
     constructor() {
         this.endpoint = "/api/v1/food";
         this.orderSelection = {
+            "not-selected": "",
             "price-asc": "price",
             "price-desc": "-price",
             "name-asc": "name",
