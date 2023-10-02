@@ -19,7 +19,7 @@ const FoodDetail = () => {
         <div>
             <h2>Food Details</h2>
             <h3>{food.name}</h3>
-            <p>Price: {food.price}</p>
+            <p>{food.price}</p>
             <img src={food.image} alt={food.name} width={200} />
 
         </div>
