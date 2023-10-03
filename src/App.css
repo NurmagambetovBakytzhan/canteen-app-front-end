@@ -39,3 +39,13 @@
 .submit-btn {
     height: 45px;
 }
+
+.link {
+    cursor: pointer;
+}
+
+.link:hover {
+    color: #ff7200;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}

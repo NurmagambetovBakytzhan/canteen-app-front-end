@@ -41,9 +41,11 @@ const Menu = () => {
 
                     {foods.map((food) => (
                             <div className="menu-item" key={food.id}>
-                                <img onClick={() => pageRoute(`/food/${food.id}`)} src={food.image} alt="Нет фото"/>
-                                <h4 onClick={() => pageRoute(`/food/${food.id}`)}> {food.name}</h4>
-                                <h4>{food.price} тг.</h4>
+                                <div className="img-container">
+                                    <img onClick={() => pageRoute(`/food/${food.id}`)} src={food.image} alt="Нет фото"/>
+                                </div>
+                                <h4 className="link" onClick={() => pageRoute(`/food/${food.id}`)}> {food.name}</h4>
+                                <h4 className="link">{food.price} тг.</h4>
                             </div>
                     ))}
                 </div>

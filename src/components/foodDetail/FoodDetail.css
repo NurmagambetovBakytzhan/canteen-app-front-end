@@ -1,0 +1,33 @@
+.item-wrapper {
+    width: 70%;
+}
+
+.food-detail {
+    display: flex;
+    justify-content: space-evenly;
+    border-color: transparent;
+    border-radius: 5px;
+}
+
+.food-img img {
+    max-width: 350px;
+}
+
+hr {
+    border: 0.5px solid lightgrey;
+}
+
+label {
+    font-size: 18px;
+}
+
+p {
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+.price {
+    font-weight: 700;
+    font-size: 3rem;
+    margin: 20px 0;
+}
