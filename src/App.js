@@ -5,6 +5,7 @@ import Login from "./components/login/Login";
 import Menu from "./components/menu/Menu";
 import FoodDetail from "./components/foodDetail/FoodDetail";
 import "./App.css";
+import Cart from "./components/cart/cart";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/registration-confirmation" element={<RegistrationConfirmation/>}/>
                     <Route path="/food/:id" element={<FoodDetail/>}/>
+                    <Route path="/cart" element={<Cart/>}/>
                 </Routes>
             </BrowserRouter>
 
