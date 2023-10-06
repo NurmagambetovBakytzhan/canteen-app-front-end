@@ -8,6 +8,9 @@ const Menu = () => {
     const [foods, setFoods] = useState([]);
     const pageRoute = useNavigate()
     const foodService = new FoodService();
+    const cartService = cartServiceInstance;
+    const [amount, setAmount] = useState(0);
+
 
     useEffect(() => {
         foodService.getFoods().then((data) => setFoods(data))
@@ -23,8 +26,9 @@ const Menu = () => {
     };
 
     return (
-        <div className="menu-wrapper">
+        <div>
             <h2>Menu bon appétit</h2>
+            <ul>
                 <SearchBar onSearchSubmit={onSearchSubmit} />
 
                 <div className="order-selector">
@@ -46,9 +50,17 @@ const Menu = () => {
                                 </div>
                                 <h4 className="link" onClick={() => pageRoute(`/food/${food.id}`)}> {food.name}</h4>
                                 <h4 className="link">{food.price} тг.</h4>
+                                <MyButton onClick={() => cartService.addToCart(food)}>В корзину</MyButton>
+
                             </div>
                     ))}
                 </div>
+
+
+
+            </ul>
+
+
         </div>
     );
 };
