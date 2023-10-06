@@ -3,6 +3,8 @@ import {useNavigate} from 'react-router-dom';
 import "./Menu.css"
 import SearchBar from "../../shared/components/searchBar/SearchBar";
 import {FoodService} from "../../services/api/Food.service";
+import cartServiceInstance from "../../services/api/Cart.service";
+import MyButton from "../../UI/button/MyButton";
 
 const Menu = () => {
     const [foods, setFoods] = useState([]);
@@ -26,9 +28,7 @@ const Menu = () => {
     };
 
     return (
-        <div>
-            <h2>Menu bon appétit</h2>
-            <ul>
+        <div className="menu-wrapper">
                 <SearchBar onSearchSubmit={onSearchSubmit} />
 
                 <div className="order-selector">
@@ -51,16 +51,9 @@ const Menu = () => {
                                 <h4 className="link" onClick={() => pageRoute(`/food/${food.id}`)}> {food.name}</h4>
                                 <h4 className="link">{food.price} тг.</h4>
                                 <MyButton onClick={() => cartService.addToCart(food)}>В корзину</MyButton>
-
                             </div>
                     ))}
                 </div>
-
-
-
-            </ul>
-
-
         </div>
     );
 };

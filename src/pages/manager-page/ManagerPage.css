@@ -1,0 +1,13 @@
+.manager-page {
+    width: 95%;
+    display: flex;
+}
+
+.active-link {
+    color: #ff7200;
+}
+
+.orders-wrapper {
+    margin-left: 100px;
+}
+

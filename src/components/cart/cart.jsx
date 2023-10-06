@@ -2,6 +2,8 @@ import { cartService } from "../../services/api/Cart.service";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./cart.css";
+import MyButton from "../../UI/button/MyButton";
+import MyInput from "../../UI/input/MyInput";
 
 const Cart = () => {
     const cartInstance = cartService;
@@ -41,18 +43,19 @@ const Cart = () => {
 
     return (
         <div className="cart-wrapper"> {/* Apply a wrapper class for Cart */}
-            <h2>Cart</h2>
+            <h2>Корзина</h2>
             {orders.map((order) => (
                 <div className="cart-item" key={order.id}> {/* Apply a class for Cart items */}
                     <h3 onClick={() => pageRoute(`/food/${order.food.id}`)}>
                         {order.food.name}
                     </h3>
                     <div className="food-details">
-                        <div className="price">{order.food.price * order.amount}</div>
+                        <div className="price">{order.food.price * order.amount} тг.</div>
                     </div>
 
                     {order.food.name} - Quantity:{" "}
                     <button
+                        className="cart-btn"
                         onClick={() => changeQuantity(order.id, order.amount - 1)}
                         disabled={order.amount <= 1}
                     >
@@ -61,15 +64,15 @@ const Cart = () => {
                     {order.amount}{" "}
                     <button
                         onClick={() => changeQuantity(order.id, order.amount + 1)}
+                        className="cart-btn"
                         disabled={order.amount >= order.food.amount}
                     >
                         +
                     </button>{" "}
-                    <button onClick={() => deleteOrder(order.id)}>Delete</button>
+                    <button  className="cart-btn" onClick={() => deleteOrder(order.id)}>Delete</button>
                     <br />
-                    <input
-                        type="text"
-                        placeholder="Special Wishes"
+                    <textarea
+                        placeholder="Особые пожелания"
                         value={specialWishes[order.id]}
                         onChange={(e) =>
                             setSpecialWishes({
@@ -80,8 +83,8 @@ const Cart = () => {
                     />
                 </div>
             ))}
-            <button onClick={submitOrders}>Submit Orders</button>
-            <button onClick={saveChanges}>Save Changes</button>
+            <MyButton classNames={["cart-submit"]} onClick={submitOrders}>Отправить Заказ</MyButton>
+            <MyButton classNames={["cart-submit"]} onClick={saveChanges}>Сохранить изменения</MyButton>
         </div>
     );
 };

@@ -17,6 +17,11 @@
     color: #333;
 }
 
+.cart-item h3:hover {
+    color: #ff7200;
+    transition: 0.3s ease-in-out;
+}
+
 .food-details {
     display: flex;
     justify-content: space-between;
@@ -28,7 +33,7 @@
     font-weight: bold;
 }
 
-button {
+.cart-btn {
     padding: 5px 10px;
     background-color: #ff7200;
     color: #fff;
@@ -39,12 +44,18 @@ button {
     border: 2px solid white;
 }
 
-button:disabled {
+.cart-btn:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
 
-input[type="text"] {
+.cart-submit {
+    width: 200px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+.input-btn {
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
@@ -52,8 +63,20 @@ input[type="text"] {
     margin-top: 10px;
 }
 
-button:hover {
+.cart-btn:hover {
     color: #ff7200;
     background-color: white;
     border: 2px solid #ff7200;
+}
+
+textarea {
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+
+textarea:focus {
+    outline: none;
+    transition: 0.3s ease-in-out;
+    border-color: #ff7200;
 }
