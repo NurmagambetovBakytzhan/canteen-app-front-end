@@ -3,11 +3,12 @@ import RegistrationConfirmation from "./components/registration-confirmation/Reg
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Login from "./components/login/Login";
 import Menu from "./components/menu/Menu";
-import FoodDetail from "./components/foodDetail/FoodDetail";
+import FoodDetail from "./components/food-detail/FoodDetail";
 import "./App.css";
 import Cart from "./components/cart/cart";
 import GuardedRoute from "./shared/components/guraded-route/GuardedRoute";
 import ManagerPage from "./pages/manager-page/ManagerPage";
+import Order from "./shared/components/orders/Order";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/registration-confirmation" element={<RegistrationConfirmation/>}/>
                     <Route path="/food/:id" element={<FoodDetail/>}/>
                     <Route path="/cart" element={<Cart/>}/>
+                    <Route path="/active-orders" element={<Order/>}/>
                     <Route path="/manager" element={isManager ? <ManagerPage/> : <Menu/> }/>
                     <Route path="*"  element={<Menu/>}/>
                 </Routes>

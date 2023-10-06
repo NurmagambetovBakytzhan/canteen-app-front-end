@@ -1,17 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import {OrderService} from "../../../../services/api/Order.service";
-import "./ManagerOrder.css";
-import MyButton from "../../../../UI/button/MyButton";
+import {OrderService} from "../../../services/api/Order.service";
+import "./Order.css";
+import MyButton from "../../../UI/button/MyButton";
 
 
-const ManagerOrder = (orderStatus) => {
+const Order = (orderStatus) => {
     const [orders, setOrders] = useState({});
-
+    const isManager = localStorage.getItem("user_type") === "Manager";
     const orderService = new OrderService();
+    const statuses = {
+        "Processing": "Собирается",
+        "Completed": "Заказ готов"
+    };
 
 
     useEffect(() => {
-        orderService.getOrdersByStatus(orderStatus).then((data) => {
+        orderService.getOrders(orderStatus).then((data) => {
             const groupedOrders = data.reduce((acc, order) => {
                 const { order_identifier } = order;
                 if (!acc[order_identifier]) {
@@ -48,6 +52,7 @@ const ManagerOrder = (orderStatus) => {
                             <h1>Заказ №{orders[key][0].order_identifier}</h1>
                             <h1>Сумма заказа: {getPrice(orders[key])} тг.</h1>
                         </div>
+                        <h3>Статус Заказа: {statuses[orders[key][0].status]}</h3>
                         {
                             orders[key].map((order) => (
                                 <div>
@@ -57,7 +62,13 @@ const ManagerOrder = (orderStatus) => {
                                 </div>
                             ))
                         }
-                        <MyButton onClick={() => markOrder(orders[key][0].order_identifier)} classNames={["order-submit-btn"]} >Заказ Собран</MyButton>
+                        <MyButton
+                            onClick={() => markOrder(orders[key][0].order_identifier)}
+                            classNames={["order-submit-btn"]}
+                            style={{
+                                display: isManager ? '' : 'none',
+                            }}
+                        >Заказ Собран</MyButton>
                     </div>
                 ))
             }
@@ -65,4 +76,4 @@ const ManagerOrder = (orderStatus) => {
     );
 };
 
-export default ManagerOrder;
+export default Order;

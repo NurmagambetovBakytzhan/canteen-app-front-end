@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import "./ManagerPage.css";
-import ManagerOrder from "./components/orders/ManagerOrder";
+import Order from "../../shared/components/orders/Order";
 
 const ManagerPage = () => {
 
@@ -24,8 +24,8 @@ const ManagerPage = () => {
                 <h3 className={`link ${completedClicked ? "active-link" : ""}`} onClick={clickCompletedOrders}>Собранные Заказы ></h3>
             </div>
             <div className="orders-wrapper">
-                {activeClicked && <ManagerOrder orderStatus="Processing" />}
-                {completedClicked && <ManagerOrder orderStatus="Completed" />}
+                {activeClicked && <Order orderStatus="Processing" />}
+                {completedClicked && <Order orderStatus="Completed" />}
             </div>
         </div>
     );
