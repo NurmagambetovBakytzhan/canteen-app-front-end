@@ -11,6 +11,7 @@
 
 .input:focus {
     outline: none;
+    transition: 0.3s ease-in-out;
     border-color: #ff7200;
 }
 

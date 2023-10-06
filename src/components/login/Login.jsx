@@ -43,7 +43,7 @@ const Login = () => {
                 <MyInput onChange={handleEmail} type="text" placeholder="Введите почту" />
                 <label className="creds-label">Пароль:</label>
                 <MyInput onChange={handlePassword} type="password" placeholder="Введите пароль" />
-                <MyButton onClick={handleSubmit} type="submit" style={{}}>
+                <MyButton onClick={handleSubmit} type="submit" classNames={["login-btn", "login-btn-hover"]}>
                     Войти
                 </MyButton>
 

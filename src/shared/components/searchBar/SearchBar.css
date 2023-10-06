@@ -5,3 +5,17 @@
 .searchbar {
     display: flex;
 }
+
+.search-btn {
+    height: 47px;
+    width: 100px;
+}
+
+.search-input {
+    margin-top: 0;
+    margin-right: 5px;
+    width: 100%;
+    border-color: transparent;
+    box-shadow: 0 0.66rem 2rem rgba(0,0,0,0.07);
+    font-size: 15px;
+}

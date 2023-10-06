@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {FoodService} from "../../services/api/Food.service";
+import "./FoodDetail.css";
 
 const FoodDetail = () => {
     const { id } = useParams();
@@ -16,12 +17,19 @@ const FoodDetail = () => {
     }
 
     return (
-        <div>
-            <h2>Food Details</h2>
-            <h3>{food.name}</h3>
-            <p>Price: {food.price}</p>
-            <img src={food.image} alt={food.name} width={200} />
-
+        <div className="item-wrapper">
+            <h1>{food.name}</h1>
+            <hr/>
+            <div className="food-detail">
+                <div className="food-img">
+                    <img src={food.image} alt={food.name}/>
+                </div>
+                <div className="item-info">
+                    <h4 className="price">{food.price} тг.</h4>
+                    <label>Описание:</label>
+                    <p>{food.description}</p>
+                </div>
+            </div>
         </div>
     );};
 

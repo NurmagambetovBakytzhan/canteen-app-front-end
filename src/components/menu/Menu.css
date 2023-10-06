@@ -1,14 +1,8 @@
-h3:hover {
-    color: #ff7200;
-    cursor: pointer;
-}
-
 .order-selector {
     font-family: Arial, sans-serif;
     font-size: 14px;
     padding: 10px;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
+    border-color: transparent;
     width: 200px;
 }
 
@@ -24,5 +18,37 @@ h3:hover {
     font-size: 14px;
     border: 1px solid lightgrey;
     border-radius: 5px;
+}
+
+.menu-wrapper {
+    width: 80%;
+}
+
+.food-list {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    transition: 0.3s;
+    box-sizing: border-box;
+    /*justify-content: space-evenly;*/
+}
+
+.menu-item {
+    padding: 30px;
+    margin: 8.5px;
+    border-color: transparent;
+    border-radius: 5px;
+    box-shadow: 0 0.7rem 3rem rgba(0,0,0,0.07);
+}
+
+
+.img-container{
+    width: 250px;
+    height: 250px;
+}
+
+.img-container img {
+    max-width: 250px;
+    height: auto;
 }
 

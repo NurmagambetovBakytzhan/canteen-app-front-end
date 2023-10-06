@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-weight: 500;
 }
 
 .creds-label {
@@ -37,4 +38,14 @@
 
 .submit-btn {
     height: 45px;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.link:hover {
+    color: #ff7200;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
 }
