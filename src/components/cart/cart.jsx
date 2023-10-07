@@ -42,10 +42,10 @@ const Cart = () => {
     };
 
     return (
-        <div className="cart-wrapper"> {/* Apply a wrapper class for Cart */}
+        <div className="cart-wrapper">
             <h2>Корзина</h2>
             {orders.map((order) => (
-                <div className="cart-item" key={order.id}> {/* Apply a class for Cart items */}
+                <div className="cart-item" key={order.id}>
                     <h3 onClick={() => pageRoute(`/food/${order.food.id}`)}>
                         {order.food.name}
                     </h3>
