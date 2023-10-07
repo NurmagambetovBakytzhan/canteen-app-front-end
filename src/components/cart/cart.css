@@ -69,3 +69,14 @@
     border: 2px solid #ff7200;
 }
 
+#delete-btn{
+    color: red;
+    border: 2px solid red;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+#delete-btn:hover{
+    color: white;
+    background-color: red;
+}

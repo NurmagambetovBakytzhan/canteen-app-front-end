@@ -69,7 +69,7 @@ const Cart = () => {
                     >
                         +
                     </button>{" "}
-                    <button  className="cart-btn" onClick={() => deleteOrder(order.id)}>Delete</button>
+                    <button id="delete-btn" onClick={() => deleteOrder(order.id)}>Delete</button>
                     <br />
                     <MyInput
                         type="text"
