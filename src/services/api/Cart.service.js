@@ -1,5 +1,4 @@
-import axios from "axios";
-import axiosInstance from "../../shared/configs/axios-config";
+import newAxiosInstance from "../../shared/configs/axios-config";
 
 class cartService {
     constructor() {
@@ -9,7 +8,7 @@ class cartService {
 
     async getCart() {
         try {
-            const response = await axiosInstance.get(this.endpoint + 'my_orders/');
+            const response = await newAxiosInstance().get(this.endpoint + 'my_orders/');
             return response.data;
         } catch (error) {
             throw error;
@@ -18,7 +17,7 @@ class cartService {
 
     async addToCart(food) {
         try {
-            const response = await axiosInstance.post(this.endpoint, {
+            const response = await newAxiosInstance().post(this.endpoint, {
                 "food": food.id,
                 "amount": 1,
                 "special_wishes": "",
@@ -32,7 +31,7 @@ class cartService {
     async saveChanges(orders) {
         try {
             const putRequests = orders.map(async (order) => {
-                const response = await axiosInstance.put(
+                const response = await newAxiosInstance().put(
                     `${this.endpoint}/${order.id}/`,
                     order
                 );
@@ -48,7 +47,7 @@ class cartService {
 
     deleteOrder(orderId) {
         try {
-            const response = axiosInstance.delete(this.endpoint + '/' + orderId + '/');
+            const response = newAxiosInstance().delete(this.endpoint + '/' + orderId + '/');
         } catch (error) {
             throw error;
         }
@@ -56,7 +55,7 @@ class cartService {
 
     submitOrders() {
         try {
-            const response = axiosInstance.get(this.endpoint + '/' + 'send_user_orders' + '/');
+            const response = newAxiosInstance().get(this.endpoint + '/' + 'send_user_orders' + '/');
             return response
         } catch (error) {
             throw error;

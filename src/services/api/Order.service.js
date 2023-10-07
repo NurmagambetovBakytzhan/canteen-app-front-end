@@ -1,5 +1,6 @@
 import axiosInstance from "../../shared/configs/axios-config";
-import {get} from "axios";
+import axios, {get} from "axios";
+import newAxiosInstance from "../../shared/configs/axios-config";
 
 export class OrderService {
     constructor() {
@@ -8,11 +9,11 @@ export class OrderService {
 
     async getOrders(orderStatus) {
         let getEndpoint = this.endpoint + "/get_active_orders";
-        if(orderStatus)  {
+        if(orderStatus !== undefined)  {
             getEndpoint += `?order_status=${orderStatus.orderStatus}`;
         }
         try {
-            const response = await axiosInstance.get(getEndpoint);
+            const response = await newAxiosInstance().get(getEndpoint);
             return response.data;
         } catch (error) {
             console.log(error);

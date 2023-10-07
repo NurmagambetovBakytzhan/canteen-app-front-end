@@ -1,5 +1,4 @@
-import axios from "axios";
-import axiosInstance from "../../shared/configs/axios-config";
+import newAxiosInstance from "../../shared/configs/axios-config";
 
 export class FoodService {
     constructor() {
@@ -15,7 +14,7 @@ export class FoodService {
 
     async getFoods() {
         try {
-            const response = await axiosInstance.get(this.endpoint);
+            const response = await newAxiosInstance().get(this.endpoint);
             return response.data;
         } catch (error) {
             throw error;
@@ -24,7 +23,7 @@ export class FoodService {
 
     async getFood(id) {
         try {
-            const response = await axiosInstance.get(this.endpoint+id);
+            const response = await newAxiosInstance().get(this.endpoint+id);
             return response.data;
         } catch (error) {
             throw error;
@@ -34,7 +33,7 @@ export class FoodService {
 
     async searchFood(name) {
         try {
-            const response = await axiosInstance.get(`${this.endpoint}?search=${name}`);
+            const response = await newAxiosInstance().get(`${this.endpoint}?search=${name}`);
             return response.data;
         } catch (error) {
             throw error;
@@ -43,7 +42,7 @@ export class FoodService {
 
     async getOrderedFoods(value) {
         try {
-            const response = await axiosInstance.get(`${this.endpoint}?ordering=${this.orderSelection[value]}`);
+            const response = await newAxiosInstance().get(`${this.endpoint}?ordering=${this.orderSelection[value]}`);
             return response.data;
         } catch (error) {
             throw error;

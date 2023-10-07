@@ -1,4 +1,5 @@
 import axios from "axios";
+import newAxiosInstance from "../../shared/configs/axios-config";
 
 export const confirmRegistration = async (code) => {
     try {
