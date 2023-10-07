@@ -6,17 +6,23 @@ import Menu from "./components/menu/Menu";
 import FoodDetail from "./components/food-detail/FoodDetail";
 import "./App.css";
 import Cart from "./components/cart/cart";
-import GuardedRoute from "./shared/components/guraded-route/GuardedRoute";
 import ManagerPage from "./pages/manager-page/ManagerPage";
 import Order from "./shared/components/orders/Order";
+import topBar from "./components/top-bar/TopBar";
+import TopBar from "./components/top-bar/TopBar";
 
 
 function App() {
     const isManager = localStorage.getItem("user_type") === 'Manager'
     console.log(isManager)
     return (
+
+
+
         <div className="App">
+
             <BrowserRouter>
+                <TopBar />
                 <Routes>
                     <Route path="/menu" element={<Menu/>}/>
                     <Route path="/registration" element={<RegistrationForm/>}/>

@@ -38,7 +38,7 @@ const Menu = () => {
                         <option value="price-asc">Цена по возрастанию</option>
                         <option value="price-desc">Цена по убыванию</option>
                         <option value="name-asc">Название А-Я</option>
-                        <option value="name-desc">Название А-Я</option>
+                        <option value="name-desc">Название Я-А</option>
                     </select>
                 </div>
                 <div className="food-list">

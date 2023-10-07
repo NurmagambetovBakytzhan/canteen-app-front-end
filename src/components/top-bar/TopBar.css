@@ -1,0 +1,54 @@
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    color: white;
+    width: 75%;
+}
+
+
+.primary-menu {
+    flex-grow: 1;
+    text-align: left;
+    font-size: 1em;
+    font-weight: bold;
+    color: black;
+
+
+}
+
+.primary-menu a{
+    color: black;
+    text-decoration: none;
+    transition: color 0.2s;
+
+}
+
+.primary-menu a:hover{
+    color: #ff7200;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons a {
+    margin-left: 20px;
+    color: #ff7200 ;
+    text-decoration: none;
+    transition: color 0.2s;
+    border-radius: 3px;
+
+
+    padding: 10px;
+}
+.icons a:hover {
+    color: white;
+    background-color: #ff7200;
+}
+
+
+

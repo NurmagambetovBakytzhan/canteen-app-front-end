@@ -71,7 +71,8 @@ const Cart = () => {
                     </button>{" "}
                     <button  className="cart-btn" onClick={() => deleteOrder(order.id)}>Delete</button>
                     <br />
-                    <textarea
+                    <MyInput
+                        type="text"
                         placeholder="Особые пожелания"
                         value={specialWishes[order.id]}
                         onChange={(e) =>
