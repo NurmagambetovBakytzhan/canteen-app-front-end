@@ -4,7 +4,7 @@ import MyButton from "../../UI/button/MyButton";
 import MyInput from "../../UI/input/MyInput";
 import {login} from "../../services/api/Login.service";
 import {UserCreds} from "../../shared/classes/UserCredentials";
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import ErrorMessage from "../../shared/components/ErrorMessage/ErrorMessage";
 
 const Login = () => {
@@ -46,6 +46,9 @@ const Login = () => {
                 <MyButton onClick={handleSubmit} type="submit" classNames={["login-btn", "login-btn-hover"]}>
                     Войти
                 </MyButton>
+
+                <h4>Нет аккаунта? <Link to={"/registration"}>Зарегистрируйтесь</Link>
+                </h4>
 
             </div>
         </div>

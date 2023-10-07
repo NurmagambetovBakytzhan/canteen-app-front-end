@@ -4,7 +4,7 @@ import MyButton from "../../UI/button/MyButton";
 import "./RegistrationForm.css"
 import {registerUser} from "../../services/api/Registration.service";
 import ErrorMessage from "../../shared/components/ErrorMessage/ErrorMessage";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const RegistrationForm = () => {
     const navigate = useNavigate();
@@ -67,6 +67,9 @@ const RegistrationForm = () => {
             >
                 Регистрация
             </MyButton>
+
+            <h4>Уже есть аккаунт? <Link to={"/login"}>Войдите</Link>
+            </h4>
         </div>
     );
 };

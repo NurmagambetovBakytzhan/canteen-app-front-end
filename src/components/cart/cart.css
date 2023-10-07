@@ -69,14 +69,3 @@
     border: 2px solid #ff7200;
 }
 
-textarea {
-    margin-top: 15px;
-    border-radius: 5px;
-}
-
-
-textarea:focus {
-    outline: none;
-    transition: 0.3s ease-in-out;
-    border-color: #ff7200;
-}

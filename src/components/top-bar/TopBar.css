@@ -39,10 +39,8 @@
     margin-left: 20px;
     color: #ff7200 ;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.4s;
     border-radius: 3px;
-
-
     padding: 10px;
 }
 .icons a:hover {
