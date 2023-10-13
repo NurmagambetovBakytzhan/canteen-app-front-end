@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
 import './TopBar.css';
 
-const TopBar = () => {
+const TopBar = (isManager) => {
     return (
         <div className="top-bar">
             <div className="primary-menu">
                 <Link to="/menu">Главная</Link>
-                <Link to="/active-orders" style={{"margin": "20px"}}>Активные заказы</Link>
+                <Link to={ isManager.isManager ? "/manager" : "/active-orders" } style={{"margin": "20px"}}>Активные заказы </Link>
             </div>
 
             <div className="icons">

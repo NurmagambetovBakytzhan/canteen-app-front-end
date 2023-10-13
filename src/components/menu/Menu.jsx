@@ -15,16 +15,16 @@ const Menu = () => {
 
 
     useEffect(() => {
-        foodService.getFoods().then((data) => setFoods(data))
+        foodService.getFoods().then((data) => setFoods(data["results"]))
     }, []);
 
     const onSearchSubmit = (searchText) => {
-        foodService.searchFood(searchText).then((data) => setFoods(data))
+        foodService.searchFood(searchText).then((data) => setFoods(data["results"]))
     };
 
     const handleSortChange = (e) => {
         console.log(e.target.value);
-        foodService.getOrderedFoods(e.target.value).then((data) => setFoods(data));
+        foodService.getOrderedFoods(e.target.value).then((data) => setFoods(data["results"]));
     };
 
     return (

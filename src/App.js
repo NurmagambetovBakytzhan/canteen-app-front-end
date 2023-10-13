@@ -16,13 +16,9 @@ function App() {
     const isManager = localStorage.getItem("user_type") === 'Manager'
     console.log(isManager)
     return (
-
-
-
         <div className="App">
-
             <BrowserRouter>
-                <TopBar />
+                <TopBar isManager={isManager} />
                 <Routes>
                     <Route path="/menu" element={<Menu/>}/>
                     <Route path="/registration" element={<RegistrationForm/>}/>

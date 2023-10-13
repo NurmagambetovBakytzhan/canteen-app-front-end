@@ -8,34 +8,13 @@ const Order = (orderStatus) => {
     const [orders, setOrders] = useState({});
     const isManager = localStorage.getItem("user_type") === "Manager";
     const orderService = new OrderService();
-    // const ws = useRef(null);
 
-    // const [data, setData] = useState(null);
+    const btnValue = orderStatus.orderStatus === 'Processing' ? "Заказ собран" : "Заказ Готов";
 
     const statuses = {
         "Processing": "Собирается",
         "Completed": "Заказ готов"
     };
-
-    // useEffect(() => {
-    //     const ws = new WebSocket(`ws://localhost:8000/ws/notifications/?token=${localStorage.getItem("token")}`);
-    //     ws.current = new WebSocket("wss://ws.kraken.com/"); // создаем ws соединение
-    //     ws.current.onopen = () => console.log("Соединение открыто");	// callback на ивент открытия соединения
-    //     ws.current.onclose = () => console.log("Соединение закрыто"); // callback на ивент закрытия соединения
-    //
-    //     return () => ws.current.close();
-    // }, []);
-    //
-    // const gettingData = useCallback(() => {
-    //     if (!ws.current) return;
-    //
-    //     ws.current.onmessage = e => {                //подписка на получение данных по вебсокету
-    //         const message = JSON.parse(e.data);
-    //         setData(message);
-    //         console.log(message);
-    //     };
-    // }, []);
-
 
 
     useEffect(() => {
@@ -93,7 +72,7 @@ const Order = (orderStatus) => {
                             style={{
                                 display: isManager ? '' : 'none',
                             }}
-                        >Заказ Собран</MyButton>
+                        >{btnValue}</MyButton>
                     </div>
                 ))
             }

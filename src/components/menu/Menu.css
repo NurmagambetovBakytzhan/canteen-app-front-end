@@ -48,6 +48,7 @@
 }
 
 .img-container img {
+    cursor: pointer;
     max-width: 250px;
     height: auto;
 }
