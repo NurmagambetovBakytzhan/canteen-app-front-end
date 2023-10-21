@@ -2,8 +2,7 @@ import axios from 'axios';
 
 
 function newAxiosInstance() {
-    const axiosInstance = axios.create({
-    });
+    const axiosInstance = axios.create({});
 
 
     axiosInstance.interceptors.request.use(

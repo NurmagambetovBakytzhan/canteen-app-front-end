@@ -10,15 +10,21 @@ import ManagerPage from "./pages/manager-page/ManagerPage";
 import Order from "./shared/components/orders/Order";
 import topBar from "./components/top-bar/TopBar";
 import TopBar from "./components/top-bar/TopBar";
+import UserPage from "./pages/user-page/UserPage";
 
 
 function App() {
-    const isManager = localStorage.getItem("user_type") === 'Manager'
+    const isManager = () => {
+        return localStorage.getItem("user_type") === 'Manager';
+    };
+
+
+
     console.log(isManager)
     return (
         <div className="App">
             <BrowserRouter>
-                <TopBar isManager={isManager} />
+                <TopBar/>
                 <Routes>
                     <Route path="/menu" element={<Menu/>}/>
                     <Route path="/registration" element={<RegistrationForm/>}/>
@@ -27,7 +33,8 @@ function App() {
                     <Route path="/food/:id" element={<FoodDetail/>}/>
                     <Route path="/cart" element={<Cart/>}/>
                     <Route path="/active-orders" element={<Order/>}/>
-                    <Route path="/manager" element={isManager ? <ManagerPage/> : <Menu/> }/>
+                    <Route path="/profile" element={<UserPage/>}/>
+                    <Route path="/manager" element={isManager() ? <ManagerPage/> : <Menu/> }/>
                     <Route path="*"  element={<Menu/>}/>
                 </Routes>
             </BrowserRouter>

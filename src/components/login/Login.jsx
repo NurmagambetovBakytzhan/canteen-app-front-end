@@ -29,6 +29,7 @@ const Login = () => {
 
         if(status === 200) {
             navigate("/menu");
+            window.location.reload();
         } else {
             setError(true);
         }

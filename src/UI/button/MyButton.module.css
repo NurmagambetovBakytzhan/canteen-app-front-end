@@ -7,6 +7,7 @@
     border-radius: 7px;
     cursor: pointer;
     width: 100%;
+    height: auto;
 }
 
 .btn:hover {
