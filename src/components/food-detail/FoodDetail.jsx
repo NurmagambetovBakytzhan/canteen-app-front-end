@@ -33,4 +33,4 @@ const FoodDetail = () => {
         </div>
     );};
 
-export default FoodDetail;
+export default React.memo(FoodDetail);

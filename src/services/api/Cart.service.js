@@ -61,8 +61,6 @@ class cartService {
             throw error;
         }
     }
-
-
 }
 
 const cartServiceInstance = new cartService();

@@ -58,4 +58,4 @@ const Menu = () => {
     );
 };
 
-export default Menu;
+export default React.memo(Menu) ;
