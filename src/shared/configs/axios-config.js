@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-function newAxiosInstance() {
+function axiosInstance() {
     const axiosInstance = axios.create({});
 
 
@@ -24,4 +24,4 @@ function newAxiosInstance() {
     return axiosInstance;
 }
 
-export default newAxiosInstance;
+export default axiosInstance;

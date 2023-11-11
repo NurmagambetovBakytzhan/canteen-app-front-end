@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {UserService} from "../../services/api/User.service";
 import MyInput from "../../UI/input/MyInput";
 import "./UserPage.css";
@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom";
 const UserPage = () => {
     const [user, setUser] = useState({});
     const navigate = useNavigate();
-    const userService = new UserService();
+    const userService = useMemo(() => new UserService(), []);
     const [userEdit, setUserEdit] = useState({});
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const UserPage = () => {
             last_name: data.last_name,
             email: data.email,
         })});
-    }, [])
+    }, [userService]);
 
 
     const exit = () => {

@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {FoodService} from "../../services/api/Food.service";
 import "./FoodDetail.css";
 
 const FoodDetail = () => {
     const { id } = useParams();
+    const foodService = useMemo(() => new FoodService(), []);
     const [food, setFood] = useState(null);
-    const foodService = new FoodService();
 
     useEffect(() => {
-        foodService.getFood(id).then((data) => setFood(data))
-    }, [id]);
+        foodService.retrieve(id).then((data) => setFood(data))
+    }, [id, foodService]);
 
     if (!food) {
         return <div>Loading...</div>;

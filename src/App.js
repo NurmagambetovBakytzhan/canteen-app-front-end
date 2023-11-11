@@ -8,7 +8,6 @@ import "./App.css";
 import Cart from "./components/cart/cart";
 import ManagerPage from "./pages/manager-page/ManagerPage";
 import Order from "./shared/components/orders/Order";
-import topBar from "./components/top-bar/TopBar";
 import TopBar from "./components/top-bar/TopBar";
 import UserPage from "./pages/user-page/UserPage";
 
@@ -26,16 +25,16 @@ function App() {
             <BrowserRouter>
                 <TopBar/>
                 <Routes>
-                    <Route path="/menu" element={<Menu/>}/>
-                    <Route path="/registration" element={<RegistrationForm/>}/>
-                    <Route path="/login" element={<Login/>}/>
-                    <Route path="/registration-confirmation" element={<RegistrationConfirmation/>}/>
-                    <Route path="/food/:id" element={<FoodDetail/>}/>
-                    <Route path="/cart" element={<Cart/>}/>
-                    <Route path="/active-orders" element={<Order/>}/>
-                    <Route path="/profile" element={<UserPage/>}/>
-                    <Route path="/manager" element={isManager() ? <ManagerPage/> : <Menu/> }/>
-                    <Route path="*"  element={<Menu/>}/>
+                    <Route path="/menu" Component={Menu}/>
+                    <Route path="/registration" Component={RegistrationForm}/>
+                    <Route path="/login" Component={Login}/>
+                    <Route path="/registration-confirmation" Component={RegistrationConfirmation}/>
+                    <Route path="/food/:id" Component={FoodDetail}/>
+                    <Route path="/cart" Component={Cart}/>
+                    <Route path="/active-orders" Component={Order}/>
+                    <Route path="/profile" Component={UserPage}/>
+                    <Route path="/manager" Component={isManager() ? ManagerPage : Menu }/>
+                    <Route path="*"  Component={Menu}/>
                 </Routes>
             </BrowserRouter>
 

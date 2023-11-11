@@ -1,6 +1,5 @@
+
 import axiosInstance from "../../shared/configs/axios-config";
-import axios, {get} from "axios";
-import newAxiosInstance from "../../shared/configs/axios-config";
 
 export class OrderService {
     constructor() {
@@ -13,7 +12,7 @@ export class OrderService {
             getEndpoint += `?order_status=${orderStatus.orderStatus}`;
         }
         try {
-            const response = await newAxiosInstance().get(getEndpoint);
+            const response = await axiosInstance().get(getEndpoint);
             return response.data;
         } catch (error) {
             console.log(error);
@@ -24,7 +23,7 @@ export class OrderService {
         let markerEndpoint = orderStatus === "Processing" ? this.endpoint + "/mark_ready/" : this.endpoint + "/mark_given/";
 
         try {
-            await newAxiosInstance().post(markerEndpoint, {"order_identifier": Number(identifier)});
+            await axiosInstance().post(markerEndpoint, {"order_identifier": Number(identifier)});
         } catch (error) {
             console.log(error);
         }

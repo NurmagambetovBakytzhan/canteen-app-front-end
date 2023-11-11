@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {OrderService} from "../../../services/api/Order.service";
 import "./Order.css";
 import MyButton from "../../../UI/button/MyButton";
@@ -7,7 +7,7 @@ import MyButton from "../../../UI/button/MyButton";
 const Order = (orderStatus) => {
     const [orders, setOrders] = useState({});
     const isManager = localStorage.getItem("user_type") === "Manager";
-    const orderService = new OrderService();
+    const orderService = useMemo(() => new OrderService(), []);
 
     const btnValue = orderStatus.orderStatus === 'Processing' ? "Заказ собран" : "Заказ Готов";
 
@@ -30,7 +30,7 @@ const Order = (orderStatus) => {
 
             setOrders(groupedOrders);
         });
-    }, []);
+    }, [orderService, orderStatus]);
 
     const getPrice = (orders)  => {
         let result = 0;

@@ -1,4 +1,4 @@
-import newAxiosInstance from "../../shared/configs/axios-config";
+import axiosInstance from "../../shared/configs/axios-config";
 
 export class UserService {
     constructor() {
@@ -7,7 +7,7 @@ export class UserService {
 
     async getUser() {
         try {
-            const response = await newAxiosInstance().post(
+            const response = await axiosInstance().post(
                 this.endpoint + 'user/',
                 {"access_token": localStorage.getItem("token")}
             );
@@ -20,7 +20,7 @@ export class UserService {
     async updateUser(updated) {
         console.log(updated)
         try {
-            const response = await newAxiosInstance().put(
+            const response = await axiosInstance().put(
                 this.endpoint + 'update/',
                 updated,
             );

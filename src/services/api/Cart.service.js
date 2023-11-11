@@ -1,4 +1,4 @@
-import newAxiosInstance from "../../shared/configs/axios-config";
+import axiosInstance from "../../shared/configs/axios-config";
 
 class cartService {
     constructor() {
@@ -8,7 +8,7 @@ class cartService {
 
     async getCart() {
         try {
-            const response = await newAxiosInstance().get(this.endpoint + 'my_orders/');
+            const response = await axiosInstance().get(this.endpoint + 'my_orders/');
             return response.data;
         } catch (error) {
             throw error;
@@ -17,7 +17,7 @@ class cartService {
 
     async addToCart(food) {
         try {
-            const response = await newAxiosInstance().post(this.endpoint, {
+            const response = await axiosInstance().post(this.endpoint, {
                 "food": food.id,
                 "amount": 1,
                 "special_wishes": "",
@@ -31,15 +31,14 @@ class cartService {
     async saveChanges(orders) {
         try {
             const putRequests = orders.map(async (order) => {
-                const response = await newAxiosInstance().put(
+                const response = await axiosInstance().put(
                     `${this.endpoint}/${order.id}/`,
                     order
                 );
                 return response.data;
             });
 
-            const results = await Promise.all(putRequests);
-            return results;
+            return await Promise.all(putRequests);
         } catch (error) {
             throw error;
         }
@@ -47,7 +46,7 @@ class cartService {
 
     deleteOrder(orderId) {
         try {
-            const response = newAxiosInstance().delete(this.endpoint + '/' + orderId + '/');
+            axiosInstance().delete(this.endpoint + '/' + orderId + '/');
         } catch (error) {
             throw error;
         }
@@ -55,8 +54,7 @@ class cartService {
 
     submitOrders() {
         try {
-            const response = newAxiosInstance().get(this.endpoint + '/' + 'send_user_orders' + '/');
-            return response
+            return axiosInstance().get(`${this.endpoint}/send_user_orders/`)
         } catch (error) {
             throw error;
         }

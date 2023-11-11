@@ -15,7 +15,7 @@ const Cart = () => {
         cartInstance.getCart().then((data) => {
             setOrders(data);
         });
-    }, []);
+    }, [cartInstance]);
 
     const submitOrders = () => {
         cartInstance.submitOrders();
