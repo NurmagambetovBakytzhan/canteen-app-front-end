@@ -6,34 +6,12 @@ import {login} from "../../services/api/Login.service";
 import {UserCreds} from "../../shared/classes/UserCredentials";
 import {Link, useNavigate} from 'react-router-dom';
 import ErrorMessage from "../../shared/components/ErrorMessage/ErrorMessage";
+import useLogin from "../../shared/hooks/useLogin";
 
 const Login = () => {
     const navigate = useNavigate();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const { email, password, error, handleEmail, handlePassword, handleSubmit } = useLogin(login, navigate);
 
-    const [error, setError] = useState(false);
-
-    const handleEmail = (e) => {
-        setEmail(e.target.value);
-    }
-
-    const handlePassword = (e) =>{
-        setPassword(e.target.value);
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const userCredentials = new UserCreds(email, password);
-        const status = await login(userCredentials);
-
-        if(status === 200) {
-            navigate("/menu");
-            window.location.reload();
-        } else {
-            setError(true);
-        }
-    };
 
     return(
         <div className="form-wrapper">
