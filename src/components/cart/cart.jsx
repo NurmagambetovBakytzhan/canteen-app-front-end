@@ -17,9 +17,6 @@ const Cart = () => {
         });
     }, [cartInstance]);
 
-    const submitOrders = () => {
-        cartInstance.submitOrders();
-    };
 
     const saveChanges = () => {
         const updatedOrders = orders.map((order) => ({
@@ -28,6 +25,10 @@ const Cart = () => {
         }));
         cartInstance.saveChanges(updatedOrders);
     };
+
+    const submitOrder = () => {
+        cartInstance.submitOrders()
+    }
 
     const deleteOrder = (orderId) => {
         cartInstance.deleteOrder(orderId);
@@ -84,7 +85,7 @@ const Cart = () => {
                     />
                 </div>
             ))}
-            <MyButton classNames={["cart-submit"]} onClick={submitOrders}>Отправить Заказ</MyButton>
+            <MyButton classNames={["cart-submit"]} onClick={submitOrder}>Отправить Заказ</MyButton>
             <MyButton classNames={["cart-submit"]} onClick={saveChanges}>Сохранить изменения</MyButton>
         </div>
     );
