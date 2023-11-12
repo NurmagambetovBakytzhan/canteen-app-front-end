@@ -5,28 +5,17 @@ import SearchBar from "../../shared/components/searchBar/SearchBar";
 import {FoodService} from "../../services/api/Food.service";
 import cartServiceInstance from "../../services/api/Cart.service";
 import MyButton from "../../UI/button/MyButton";
+import useMenu from "../../shared/hooks/useMenu";
 
 
 const Menu = () => {
     const pageRoute = useNavigate();
     const foodService = useMemo(() => new FoodService(), []);
     // const [foods, setFoods] = useFetch(foodService);
-    const [foods, setFoods] = useState([]);
     const cartService = cartServiceInstance;
+    const [amount, setAmount] = useState(0);
 
-
-    useEffect(() => {
-        foodService.getAll().then((data) => setFoods(data)).catch((error) => pageRoute("/login"))
-    }, [foodService, pageRoute]);
-
-    const onSearchSubmit = (searchText) => {
-        foodService.searchFood(searchText).then((data) => setFoods(data))
-    };
-
-    const handleSortChange = (e) => {
-        console.log(e.target.value);
-        foodService.getOrderedFoods(e.target.value).then((data) => setFoods(data));
-    };
+    const { foods, onSearchSubmit, handleSortChange } = useMenu(foodService, pageRoute);
 
     return (
         <div className="menu-wrapper">
