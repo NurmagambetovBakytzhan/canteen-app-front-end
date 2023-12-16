@@ -7,9 +7,8 @@ export class UserService {
 
     async getUser() {
         try {
-            const response = await axiosInstance().post(
+            const response = await axiosInstance().get(
                 this.endpoint + 'user/',
-                {"access_token": localStorage.getItem("token")}
             );
             return response.data;
         } catch (error) {

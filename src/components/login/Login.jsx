@@ -3,7 +3,6 @@ import './Login.css';
 import MyButton from "../../UI/button/MyButton";
 import MyInput from "../../UI/input/MyInput";
 import {login} from "../../services/api/Login.service";
-import {UserCreds} from "../../shared/classes/UserCredentials";
 import {Link, useNavigate} from 'react-router-dom';
 import ErrorMessage from "../../shared/components/ErrorMessage/ErrorMessage";
 import useLogin from "../../shared/hooks/useLogin";

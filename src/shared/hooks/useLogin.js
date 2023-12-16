@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {setUserType} from "../../services/api/Login.service";
 
 const useLogin = (login, navigate) => {
     const [email, setEmail] = useState('');
@@ -23,6 +24,7 @@ const useLogin = (login, navigate) => {
             if (status === 200) {
                 navigate("/menu");
                 window.location.reload();
+                await setUserType()
             } else {
                 setError(true);
             }
