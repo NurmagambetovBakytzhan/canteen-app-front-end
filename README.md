@@ -27,4 +27,7 @@
 1. react.js
 2. react-router-dom
 3. Django, DRF for backend
-4. axios 
+4. axios
+5. Redis for caching
+6. SMTP for email messages
+7. Postgresql as data storage
